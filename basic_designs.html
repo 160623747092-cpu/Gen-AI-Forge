@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basic Interior Designs</title>
+
+    <style>
+        body {
+            background: #05070d;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .search-box {
+            width: 60%;
+            padding: 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 16px;
+            background: #111522;
+            color: white;
+        }
+
+        .search-btn {
+            padding: 14px 24px;
+            margin-left: 10px;
+            background: linear-gradient(135deg, #00c6a7, #00a8cc);
+            border: none;
+            border-radius: 10px;
+            color: black;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .results {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .results img {
+            width: 100%;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Search Interior Designs</h1>
+
+    <input id="searchInput" class="search-box" placeholder="e.g., modern living room">
+
+    <button class="search-btn" onclick="searchDesigns()">
+        Search
+    </button>
+
+    <div id="results" class="results"></div>
+
+    <script>
+        async function searchDesigns() {
+            const query = document.getElementById("searchInput").value.trim();
+
+            if (!query) return;
+
+            const res = await fetch(`/search-interiors?query=${encodeURIComponent(query)}`);
+            const data = await res.json();
+
+            const container = document.getElementById("results");
+            container.innerHTML = "";
+
+            if (!data.images.length) {
+                container.innerHTML = "<h3>No images found</h3>";
+                return;
+            }
+
+            data.images.forEach(img => {
+                const imageEl = document.createElement("img");
+                imageEl.src = img;
+                container.appendChild(imageEl);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

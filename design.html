@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>GruhaBuddy Design Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- tsParticles CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.6.0/tsparticles.slim.bundle.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            background: #05070d;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Particle background */
+        #tsparticles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .top-bar {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            width: 60%;
+            padding: 16px 22px;
+            border-radius: 14px;
+            border: none;
+            font-size: 16px;
+            background: #111522;
+            color: white;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            width: 260px;
+            height: 300px;
+            background: #111522;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .icon-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00c6a7, #00a8cc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .explore-btn {
+            background: linear-gradient(135deg, #00c6a7, #00a8cc);
+            border: none;
+            padding: 10px 22px;
+            border-radius: 10px;
+            color: black;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Particle container -->
+    <div id="tsparticles"></div>
+
+    <button class="back-btn" onclick="window.location.href='/'">← Back to Home</button>
+
+    <h1>GruhaBuddy Design Studio</h1>
+
+    <div class="top-bar">
+        <input class="search-box" placeholder="Search interior styles, rooms..." />
+    </div>
+
+    <div class="card-container">
+
+        <!-- AI Interior Designer - React App -->
+        <div class="feature-card">
+            <div class="icon-circle">✨</div>
+            <div class="card-title">AI Interior Designer</div>
+            <button class="explore-btn" onclick="window.location.href='/app'">
+                Explore
+            </button>
+        </div>
+
+        <!-- Basic Interior -->
+        <div class="feature-card">
+            <div class="icon-circle">🏠</div>
+            <div class="card-title">Basic Interior Designs</div>
+            <button class="explore-btn" onclick="window.location.href='/basic-designs'">
+                Explore
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Particle configuration -->
+    <script>
+        tsParticles.load("tsparticles", {
+            background: { color: "#05070d" },
+            particles: {
+                number: { value: 60 },
+                size: { value: 2 },
+                move: { enable: true, speed: 1 },
+                opacity: { value: 0.5 },
+                links: {
+                    enable: true,
+                    distance: 150,
+                    opacity: 0.4
+                }
+            },
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "repulse" },
+                    onClick: { enable: true, mode: "push" }
+                },
+                modes: {
+                    repulse: { distance: 100 },
+                    push: { quantity: 4 }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
